@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleJuegosOlimpicos.css">
+    <script src="https://kit.fontawesome.com/da327203e1.js" crossorigin="anonymous"></script>
+    <link  rel="icon" href="../favicon.ico">
+    <title>NEW ― OLYMPIC</title>
+</head>
+
+<body>
+    <a href="admin.html" id="back"><img src="../image/back2.png" alt=""></a>
+    <div class="box-portada">
+        <div id="box-clase"><h1>JuegosOlimpicos</h1></div>
+        <div id="box-img"><img src="../image/logo-newolympic-reco.png" alt=""></div>
+    </div>
+    <p th:text="${ciudad}">xx</p>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Identificador</th>
+                    <th>Año</th>
+                    <th>Ciudad</th>
+                    <th>Nombre_Olimpico</th>
+                    <th>Logo_Olimpico</th>
+                    <th>Descripcion</th>
+                    <th>Borrar</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="juegosolimpicos: ${lista_juegosolimpicos}">
+
+                    <td id="identificador" th:text="${juegosolimpicos.identificador}"></td>
+                    <td id="anyo" th:text="${juegosolimpicos.anyo}"></td>
+                    <td th:text="${juegosolimpicos.ciudad}"></td>
+                    <td th:text="${juegosolimpicos.nombre_olimpico}"></td>
+                    <td><img id="logo-olim" th:src="${juegosolimpicos.logo_olimpico}" alt="" width="100px" height="100px"></td>
+               		<td th:text="${juegosolimpicos.descripcion}"></td>
+                    <td id="borrar"><a th:href="@{borrarJuegosOlimpicos(id=${juegosolimpicos.identificador})}"><img id="remove" src="../image/trash-can-solid.svg" alt=""></a></td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="box-input">
+        <form method="get" action="/crearJuegosOlimpicos">
+        	<input type="number" name="anyo" placeholder="Año de los Juegos">
+        	<input type="text" name="ciudad" placeholder="Nombre de la ciudad">
+            <input type="text" name="nombre_olimpico" placeholder="Nombre Olimpico">
+            <input type="text" name="logo_olimpico" placeholder="Url Logo Olimpico">
+            <input id="sinopsis" type="text" name="descripcion" placeholder="descripcion">
+            <input id="enviar" type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+
+</html>

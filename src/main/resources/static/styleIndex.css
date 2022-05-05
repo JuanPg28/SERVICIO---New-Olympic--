@@ -1,0 +1,63 @@
+body {
+    background: rgb(199, 199, 199);
+    background: linear-gradient(228deg, rgba(199, 199, 199, 1) 0%, rgba(41, 41, 41, 1) 100%);
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+#logo {
+    width: 200px;
+    position: relative;
+    transition: all 1s ease;
+}
+
+
+.box {
+    margin-top: 60px;
+    margin-bottom: 210px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#circle {
+    position: relative;
+    width: 500px;
+    -webkit-animation: spin 30s linear infinite;
+    -moz-animation: spin 30s linear infinite;
+    animation: spin 30s linear infinite;
+}
+
+@-moz-keyframes spin {
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+a {
+    text-decoration: none;
+    position: absolute;
+}
+
+/*Llamas*/
+
+#fire {
+    width: 200px;
+    position: absolute;
+    top: 90px;
+}
+

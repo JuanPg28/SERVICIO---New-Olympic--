@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleNoticias.css">
+    <script src="https://kit.fontawesome.com/da327203e1.js" crossorigin="anonymous"></script>
+    <link  rel="icon" href="../favicon.ico">
+    <title>NEW ― OLYMPIC</title>
+</head>
+
+<body>
+    <a href="admin.html" id="back"><img src="../image/back2.png" alt=""></a>
+    <div class="box-portada">
+        <div id="box-clase"><h1>Noticias</h1></div>
+        <div id="box-img"><img src="../image/logo-newolympic-reco.png" alt=""></div>
+    </div>
+    <p th:text="${titulo}">xx</p>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Identificador</th>
+                    <th>Titulo</th>
+                    <th>Fecha</th>
+                    <th>Noticia</th>
+                    <th>Imagen_Noticia</th>
+                    <th>Borrar</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="noticias: ${lista_noticias}">
+
+                    <td id="identificador" th:text="${noticias.identificador}"></td>
+                    <td th:text="${noticias.titulo}"></td>
+                    <td th:text="${noticias.fecha}"></td>
+                    <td th:text="${noticias.noticia}"></td>
+                    <td><img th:src="${noticias.imagen_noticia}" alt="" width="100px"></td>
+                    <td id="borrar"><a th:href="@{borrarNoticias(id=${noticias.identificador})}"><img id="remove" src="../image/trash-can-solid.svg" alt=""></a></td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="box-input">
+        <form method="get" action="/crearNoticias">
+        	<input type="text" name="titulo" placeholder="Titulo">
+            <input type="text" name="fecha" placeholder="Fecha">
+            <input id="sinopsis" type="text" name="noticia" placeholder="Noticia">
+            <input type="text" name="imagen_noticia" placeholder="Url Imagen Noticia">
+            <input id="enviar" type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleAtletas.css">
+    <script src="https://kit.fontawesome.com/da327203e1.js" crossorigin="anonymous"></script>
+    <link  rel="icon" href="../favicon.ico">
+    <title>NEW ― OLYMPIC</title>
+</head>
+
+<body>
+    <a href="admin.html" id="back"><img src="../image/back2.png" alt=""></a>
+    <div class="box-portada">
+        <div id="box-clase"><h1>Atletas</h1></div>
+        <div id="box-img"><img src="../image/logo-newolympic-reco.png" alt=""></div>
+    </div>
+    <p th:text="${nombre}">xx</p>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Identificador</th>
+                    <th>Nombre</th>
+                    <th>Nacionalidad</th>
+                    <th>Bandera</th>
+                    <th>Medallas</th>
+                    <th>Bibliografia</th>
+                    <th>Foto_Atleta</th>
+                    <th>Borrar</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="atletas: ${lista_atletas}">
+
+                    <td id="identificador" th:text="${atletas.identificador}"></td>
+                    <td th:text="${atletas.nombre}"></td>
+                    <td th:text="${atletas.nacionalidad}"></td>
+                    <td><img id="photo-bandera" th:src="${atletas.bandera}" alt="" width="100px"></td>
+               		<td th:text="${atletas.medallas}"></td>
+               		<td th:text="${atletas.bibliografia}"></td>
+               		<td><img id="photo-atleta" th:src="${atletas.foto_atleta}" alt="" width="100px" height="100px"></td>
+                    <td id="borrar"><a th:href="@{borrarAtletas(id=${atletas.identificador})}"><img id="remove" src="../image/trash-can-solid.svg" alt=""></a></td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="box-input">
+        <form method="get" action="/crearAtletas">
+        	<input type="text" name="nombre" placeholder="Nombre del Atleta">
+            <input type="text" name="nacionalidad" placeholder="Nacionalidad">
+            <input type="text" name="bandera" placeholder="Url de la Bandera">
+            <input type="text" name="medallas" placeholder="Medallas">
+            <input id="sinopsis" type="text" name="bibliografia" placeholder="Bibliografia">
+            <input type="text" name="foto_atleta" placeholder="Url Foto Atleta">
+            <input id="enviar" type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+
+</html>

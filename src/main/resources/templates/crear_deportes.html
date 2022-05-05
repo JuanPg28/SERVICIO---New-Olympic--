@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleDeportes.css">
+    <script src="https://kit.fontawesome.com/da327203e1.js" crossorigin="anonymous"></script>
+    <link  rel="icon" href="../favicon.ico">
+    <title>NEW ― OLYMPIC</title>
+</head>
+
+<body>
+    <a href="admin.html" id="back"><img src="../image/back2.png" alt=""></a>
+    <div class="box-portada">
+        <div id="box-clase"><h1>Deportes</h1></div>
+        <div id="box-img"><img src="../image/logo-newolympic-reco.png" alt=""></div>
+    </div>
+    <p th:text="${nombre_deporte}">xx</p>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Identificador</th>
+                    <th>Nombre_Deporte</th>
+                    <th>Descripcion</th>
+                    <th>Mejores_Atletas</th>
+                    <th>Icono_Deporte</th>
+                    <th>Borrar</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="deportes: ${lista_deportes}">
+
+                    <td id="identificador" th:text="${deportes.identificador}"></td>
+                    <td th:text="${deportes.nombre_deporte}"></td>
+                    <td th:text="${deportes.descripcion}"></td>
+                    <td th:text="${deportes.mejores_atletas}"></td>
+                    <td><img th:src="${deportes.icono_deporte}" alt="" width="100px"></td>
+                    <td id="borrar"><a th:href="@{borrarDeportes(id=${deportes.identificador})}"><img id="remove" src="../image/trash-can-solid.svg" alt=""></a></td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="box-input">
+        <form method="get" action="/crearDeportes">
+        	<input type="text" name="nombre_deporte" placeholder="Nombre Deporte">
+        	<input type="text" name="descripcion" placeholder="Descripcion">
+            <input type="text" name="mejores_atletas" placeholder="Mejores_Atletas">
+            <input type="text" name="icono_deporte" placeholder="Icono Deporte">
+            <input id="enviar" type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+
+</html>
